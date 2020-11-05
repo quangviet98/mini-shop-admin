@@ -1,0 +1,24 @@
+
+.page-body-wrapper{  
+    padding-top: 65px;
+    width: 100%;
+    height: 100vh;
+}
+
+.content-wrapper{
+    background: #eee;   
+    height: 100%;
+    width: calc(100% - 250px);
+    margin-left: auto;
+    padding: 20px;
+    transition: width .25s ease;
+    -webkit-transition: width .25s ease;
+    -moz-transition: width .25s ease;
+    -ms-transition: width .25s ease;
+}
+
+.collapsed {
+    .content-wrapper{
+        width: calc(100% - 80px);
+    }
+}
