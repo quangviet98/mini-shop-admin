@@ -3,7 +3,7 @@ import queryString from "query-string";
 import { API_URL, BASE_URL } from "../../configs";
 
 const axiosClient = axios.create({
-  baseURL: BASE_URL,
+  // baseURL: BASE_URL,
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json",

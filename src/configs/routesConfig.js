@@ -1,8 +1,14 @@
 export const LOGIN_PATH = "/login";
 export const DEFAULT_PATH = "/orders";
 export const ORDER_PATH = "/orders";
+export const ORDER_DETAIL_PATH = "/orders/:id";
 export const PRODUCT_PATH = "/products";
+export const CREATE_PRODUCT_PATH = "/products/create";
+export const UPDATE_PRODUCT_PATH = "/products/edit/:id";
 export const CATEGORY_PATH = "/categories";
+export const CREATE_CATEGORY_PATH = "/categories/create";
+export const UPDATE_CATEGORY_PATH = "/categories/edit/:id";
 export const ROLE_PATH = "/roles";
 export const ACCOUNT_PATH = "/accounts";
+export const CREATE_ACCOUNT_PATH = "/accounts/create";
 export const DELIVER_PATH = "/deliver";

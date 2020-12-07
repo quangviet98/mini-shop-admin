@@ -1,4 +1,5 @@
 import { fetch } from "../utils";
+import { API_URL, BASE_URL, BASE_URL2 } from "../../configs";
 
 const apiService = (store) => (next) => (action) => {
   const result = next(action);
@@ -13,7 +14,14 @@ const apiService = (store) => (next) => (action) => {
     throw new Error(`'path' not specified for async action ${action.type}`);
   }
 
-  return fetch(path, method, body, withToken)
+  let url = path;
+  if (path.startsWith("/")) {
+    url = `${BASE_URL}${path}`;
+  } else {
+    url = `${BASE_URL2}${path}`;
+  }
+
+  return fetch(url, method, body, withToken)
     .then(
       (res) => handleResponse(res, action, next),
       (err) => handleErrors(err, action, next)

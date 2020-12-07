@@ -1,24 +1,37 @@
-
-.page-body-wrapper{  
+.page-body-wrapper {
     padding-top: 65px;
     width: 100%;
     height: 100vh;
 }
 
-.content-wrapper{
-    background: #eee;   
-    height: 100%;
+.content-wrapper {
+    background: #eee;
+    min-height: 100%;
     width: calc(100% - 250px);
     margin-left: auto;
     padding: 20px;
-    transition: width .25s ease;
-    -webkit-transition: width .25s ease;
-    -moz-transition: width .25s ease;
-    -ms-transition: width .25s ease;
+    transition: width 0.25s ease;
+    -webkit-transition: width 0.25s ease;
+    -moz-transition: width 0.25s ease;
+    -ms-transition: width 0.25s ease;
+
+    .page-title {
+        text-transform: uppercase;
+        font-size: 20px;
+        margin: 10px 20px 10px 0px;
+    }
+
+    .card {
+        width: 100%;
+        background: #ffffff;
+        padding: 1rem;
+        box-shadow: 1px 3px 11px -1px rgba(0, 0, 0, 0.1);
+        border: none;
+    }
 }
 
 .collapsed {
-    .content-wrapper{
+    .content-wrapper {
         width: calc(100% - 80px);
     }
 }

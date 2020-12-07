@@ -18,6 +18,7 @@ export default compose(
   withRouter,
   connect(null, {
     login: authActions.login,
+    getInfo: authActions.getInfo,
   }),
   withFormik({
     displayName: "loginForm",
@@ -26,17 +27,27 @@ export default compose(
     },
     validationSchema,
     handleSubmit: async (values, { props, setSubmitting }) => {
-      const { login, history, match } = props;
+      const { login, history, match, getInfo } = props;
       login(values.usr, values.pwd)
         .then((res) => {
           setSubmitting(false);
+          getInfo(res.id)
+            .then((res) => {
+              const roles = (res.roles || []).filter(
+                (role) => role.checked === true
+              );
 
-          console.log("res", res);
-          if (res.roles[0] && res.roles[0].name === ROLES.deliver) {
-            history.push(PATH.DELIVER_PATH);
-          } else {
-            history.push(PATH.ORDER_PATH);
-          }
+              let defaultPath = "/login";
+              roles.map((r) => {
+                if (r.name === ROLES.deliver) {
+                  defaultPath = PATH.DELIVER_PATH;
+                } else if (r.name === ROLES.admin || r.name === ROLES.staff) {
+                  defaultPath = PATH.ORDER_PATH;
+                }
+              });
+              history.push(defaultPath);
+            })
+            .catch((err) => console.log("err", err));
         })
         .catch((err) => {
           setSubmitting(false);

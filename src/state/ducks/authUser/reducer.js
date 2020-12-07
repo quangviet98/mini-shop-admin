@@ -6,9 +6,18 @@ const initialState = {
 };
 
 export default function reducer(state = initialState, action) {
+  console.log("action", action);
   switch (action.type) {
-    case types.LOGIN_SUCCESS:
-      return { ...state, user: action.payload, isAuthenticated: true };
+    case types.GET_ACCOUNT_SUCCESS: {
+      const roles = (action.payload.roles || []).filter(
+        (role) => role.checked === true
+      );
+      return {
+        ...state,
+        user: { ...action.payload, roles },
+        isAuthenticated: true,
+      };
+    }
     case types.LOGOUT:
       return { ...state, user: null, isAuthenticated: false };
     default:
